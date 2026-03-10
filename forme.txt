@@ -1,0 +1,5 @@
+db connection for docker-compose.yml=mysql+pymysql://root:Pardeep%40991@localhost:3306/commercebussiness
+
+for local db =mysql+pymysql://root:Pardeep%40991@localhost:3306/commercebussiness
+
+for docker db using self db=mysql+pymysql://root:Pardeep%40991@host.docker.internal:3306/commercebussiness
