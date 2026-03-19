@@ -5,9 +5,11 @@ services:
   mysql:
     image: mysql:8.0
     container_name: mysql
+    env_file:
+    .env                    # ← add this
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: commercebussiness
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}   # ← was hardcoded
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -24,8 +26,10 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    env_file: 
+     .env
     environment:
-      DATABASE_URL: mysql+pymysql://root:root@mysql:3306/commercebussiness
+      DATABASE_URL: ${DATABASE_URL} 
 
 volumes:
   mysql_data:
